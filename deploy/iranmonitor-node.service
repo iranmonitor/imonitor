@@ -1,0 +1,16 @@
+[Unit]
+Description=iMonitor free monitoring and tunnel panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/imonitor/runtime
+ExecStart=/opt/imonitor/bin/imonitor serve --db /opt/imonitor/runtime/iranmonitor.db --data-dir /opt/imonitor/runtime --listen 0.0.0.0:6060
+Restart=always
+RestartSec=5
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

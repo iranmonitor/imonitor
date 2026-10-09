@@ -1,0 +1,1 @@
+date_utc,build,host_a,host_b,kernel_a,kernel_b,generator_version,protocol,outer_family,inner_family,mtu,lanes,cipher,key_derivation,monitor_count,monitor_interval_secs,direction,run,receiver_mbps,host_a_cpu_percent,host_b_cpu_percent,idle_rtt_ms,loaded_rtt_ms,udp_offered_mbps,udp_payload_bytes,udp_loss_percent,udp_jitter_ms,result_file,notes

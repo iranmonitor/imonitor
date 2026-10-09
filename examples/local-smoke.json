@@ -1,0 +1,22 @@
+{
+  "agent_id": "local-smoke",
+  "interval_secs": 60,
+  "checks": [
+    {
+      "kind": "tcp",
+      "id": "closed-local-port",
+      "target": "127.0.0.1",
+      "port": 1,
+      "ip_version": "ipv4",
+      "timeout_ms": 500
+    },
+    {
+      "kind": "http",
+      "id": "local-http",
+      "host": "127.0.0.1",
+      "ip_version": "ipv4",
+      "path": "/",
+      "timeout_ms": 500
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+<form method="post" action="/admin/checks/save" class="stack-form monitor-builder tunnel-wizard" id="monitorBuilder" data-tunnel-wizard>
+  <input type="hidden" name="return_to" value="@@return_to@@">
+  <input type="hidden" name="return_section" value="tunnels">
+  <input type="hidden" name="original_check_id" id="monitorOriginalCheckId">
+  <input type="hidden" name="kind" id="monitorKind" value="tunnel">
+  <input type="hidden" name="enabled" value="1">
+  <input type="hidden" name="ip_version" value="any">
+  <input type="hidden" name="timeout_ms" value="3000">
+  <input type="hidden" name="min_rx_packets_delta" value="1">
+  <input type="hidden" name="min_tx_packets_delta" value="1">
+  <div class="builder-mode-bar"><div><strong id="monitorBuilderModeLabel">@@new_tunnel@@</strong><p class="muted">@@intro@@</p></div><button type="button" class="ghost" id="monitorFormReset">@@reset@@</button></div>
+  <ol class="wizard-progress" aria-label="@@steps_label@@">
+    <li data-wizard-marker="0" aria-current="step"><span>01</span>@@step1@@</li>
+    <li data-wizard-marker="1"><span>02</span>@@step2@@</li>
+    <li data-wizard-marker="2"><span>03</span>@@step3@@</li>
+  </ol>
+  <div class="wizard-step" data-wizard-step="0">
+    <fieldset class="preset-picker"><legend>@@preset_title@@</legend><div class="preset-options">
+      <button type="button" class="preset-choice" data-tunnel-preset="gaming" aria-pressed="false"><strong>@@preset_gaming@@</strong><span>UDP / GUE · kernel</span></button>
+      <button type="button" class="preset-choice" data-tunnel-preset="secure" aria-pressed="false"><strong>@@preset_secure@@</strong><span>ESP 50 / WireGuard</span></button>
+      <button type="button" class="preset-choice is-selected" data-tunnel-preset="custom" aria-pressed="true"><strong>@@preset_custom@@</strong><span>@@preset_custom_hint@@</span></button>
+    </div><p class="field-hint" id="tunnelPresetHelp" role="status">@@preset_hint@@</p></fieldset>
+    <div data-secure-preset hidden><label for="tunnelSecureProtocol">@@secure_protocol@@</label><select id="tunnelSecureProtocol"><option value="wireguard">WireGuard · UDP</option><option value="esp">ESP · IP protocol 50 · AES-CBC / HMAC-SHA256</option></select></div>
+    <div class="form-grid">
+      <div><label for="monitorLabel">@@name@@</label><input type="text" name="label" id="monitorLabel" placeholder="Tehran ↔ Frankfurt" maxlength="160" required><div class="field-hint">@@name_hint@@</div></div>
+      <div><label for="tunnelProtocolSelect">@@protocol@@</label><select name="tunnel_protocol" id="tunnelProtocolSelect">@@protocol_options@@</select><div class="field-hint">@@protocol_hint@@</div></div>
+    </div>
+    <div class="protocol-explainer" role="status" id="tunnelProtocolHelp"></div>
+    <div class="guide-callout"><strong>@@two_servers@@</strong><p>@@two_servers_hint@@</p></div>
+  </div>
+  <div class="wizard-step" data-wizard-step="1">
+    <div class="endpoint-map" aria-hidden="true"><div><span>@@this_server@@</span><strong>A</strong></div><div class="endpoint-map__line">↔</div><div><span>@@other_server@@</span><strong>B</strong></div></div>
+    <div class="form-grid">
+      <div><label for="tunnelOuterRemote">@@peer_public@@</label><input type="text" name="outer_remote" id="tunnelOuterRemote" placeholder="198.51.100.20" required spellcheck="false" dir="ltr"><div class="field-hint">@@peer_public_hint@@</div></div>
+      <div><label for="tunnelLocalOuter">@@local_public@@</label><select name="local_outer" id="tunnelLocalOuter"><option value="">@@automatic@@</option>@@local_options@@</select><div class="field-hint">@@local_public_hint@@</div></div>
+      <div><label for="tunnelInnerLocal">@@local_inner@@</label><input type="text" name="inner_local_cidr" id="tunnelInnerLocal" placeholder="10.20.0.1/30" required spellcheck="false" dir="ltr"><div class="field-hint">@@local_inner_hint@@</div></div>
+      <div><label for="tunnelInnerPeer">@@peer_inner@@</label><input type="text" name="inner_probe" id="tunnelInnerPeer" placeholder="10.20.0.2" required spellcheck="false" dir="ltr"><div class="field-hint">@@peer_inner_hint@@</div></div>
+    </div>
+    <div class="guide-callout"><strong>@@address_example@@</strong><p>@@address_example_hint@@</p></div>
+  </div>
+  <div class="wizard-step" data-wizard-step="2">
+    <div class="wizard-settings">
+      <div class="subpanel stack-form" data-tunnel-protocols="esp">
+        <label for="tunnelEspCipher">@@esp_cipher@@</label>
+        <select name="esp_cipher" id="tunnelEspCipher"><option value="aes_cbc_hmac_sha256" selected>AES-CBC + HMAC-SHA256 · @@esp_secure@@</option><option value="legacy_aes_gcm">@@esp_gcm_legacy@@</option></select>
+        <label for="tunnelEspDerivation">@@esp_derivation@@</label>
+        <select name="esp_key_derivation" id="tunnelEspDerivation"><option value="hkdf_sha256" selected>HKDF-SHA256 · @@esp_secure@@</option><option value="legacy">@@esp_legacy@@</option></select>
+        <p class="field-hint">@@esp_hint@@</p>
+        <button type="button" class="ghost" data-generate-esp-key>@@esp_generate@@</button>
+      </div>
+      @@advanced_fields@@
+      <details class="soft-details"><summary>@@tuning_title@@</summary><p class="field-hint">@@tuning_hint@@</p><div class="form-grid">
+        <div><label for="tunnelMtu">MTU</label><input type="number" name="mtu" id="tunnelMtu" min="576" max="9000" placeholder="@@automatic@@"><div class="field-hint">@@mtu_hint@@</div></div>
+        <div data-tunnel-protocols="gre,gretap,ipv4_ip_in_ip,ipip,ipv6_encapsulation,encap,vxlan,geneve"><label for="tunnelTtl">TTL / Hop limit</label><input type="number" name="ttl" id="tunnelTtl" min="1" max="255" placeholder="@@automatic@@"></div>
+        <div data-tunnel-protocols="gre,gretap,ipv4_ip_in_ip,ipip,ipv6_encapsulation,encap,vxlan,geneve"><label for="tunnelTrafficClass">@@traffic_class@@</label><input type="number" name="traffic_class" id="tunnelTrafficClass" min="0" max="255" placeholder="@@automatic@@"><div class="field-hint">@@traffic_class_hint@@</div></div>
+        <div data-tunnel-protocols="vxlan,geneve"><label for="tunnelVni">VNI</label><input type="number" name="vni" id="tunnelVni" min="1" max="16777215" placeholder="42"><div class="field-hint">@@vni_hint@@</div></div>
+        <div data-tunnel-protocols="tun" data-tun-lanes><label for="tunnelLanes">@@lanes@@</label><input type="number" name="tun_lanes" id="tunnelLanes" min="1" max="8" placeholder="1"><div class="field-hint">@@lanes_hint@@</div></div>
+      </div></details>
+      <details class="soft-details"><summary>@@advanced_title@@</summary><div class="form-grid">
+        <div><label for="monitorCheckId">@@identifier@@</label><input type="text" name="check_id" id="monitorCheckId" placeholder="tehran-frankfurt"><div class="field-hint">@@identifier_hint@@</div></div>
+        <div><label for="tunnelInterfaceInput">@@interface@@</label><input type="text" name="interface" id="tunnelInterfaceInput" placeholder="auto"><div class="field-hint">@@interface_hint@@</div></div>
+        <div><label for="tunnelSourceInterface">@@source_interface@@</label><select name="source_interface" id="tunnelSourceInterface"><option value="">@@automatic@@</option>@@source_options@@</select></div>
+        <div><label for="tunnelInterval">@@interval@@</label><input type="number" name="interval_secs" id="tunnelInterval" min="10" step="1" value="60" required></div>
+        <div><label for="tunnelPublicVisible">@@public_visible@@</label><select name="public_visible" id="tunnelPublicVisible"><option value="0" selected>@@private@@</option><option value="1">@@public@@</option></select></div>
+        <div><label for="tunnelExpectedState">@@expected_state@@</label><input type="text" name="expected_operstate" id="tunnelExpectedState" value="up"></div>
+        <div><label for="tunnelCreationMode">@@creation_mode@@</label><select name="auto_create_interface" id="tunnelCreationMode"><option value="1" selected>@@create_interface@@</option><option value="0">@@existing_interface@@</option></select></div>
+        <div><label for="tunnelTrafficRequirement">@@traffic_requirement@@</label><select name="require_bidirectional_traffic" id="tunnelTrafficRequirement"><option value="0" selected>@@idle_allowed@@</option><option value="1">@@traffic_required@@</option></select><div class="field-hint">@@traffic_hint@@</div></div>
+      </div></details>
+      <details class="soft-details speedtest-settings" open><summary>@@speedtest_title@@</summary><p class="field-hint">@@speedtest_hint@@</p><div class="form-grid">
+        <div class="span-2"><label for="tunnelSpeedToken">@@speedtest_token@@</label><div class="input-action"><input type="text" name="speedtest_token" id="tunnelSpeedToken" minlength="32" maxlength="128" pattern="[!-~]{32,128}" autocomplete="off" spellcheck="false" dir="ltr"><button type="button" class="ghost" data-generate-speedtest-token>@@generate@@</button></div><div class="field-hint">@@speedtest_token_hint@@</div></div>
+        <div><label for="tunnelSpeedPort">@@speedtest_port@@</label><input type="number" name="speedtest_port" id="tunnelSpeedPort" min="1" max="65535" value="5201"></div>
+      </div></details>
+      <div class="peer-guide"><div class="peer-guide__head"><div><span class="eyebrow">@@peer_label@@</span><h3>@@peer_title@@</h3></div><button type="button" class="ghost" data-copy-peer-guide>@@copy@@</button></div><p>@@peer_hint@@</p><pre class="code-block" id="tunnelPeerGuide"></pre><p class="field-hint" id="tunnelPeerCopyStatus" role="status"></p></div>
+      <div class="guide-callout"><strong>@@after_save@@</strong><p>@@after_save_hint@@</p></div>
+    </div>
+  </div>
+  <div id="tunnelWizardError" class="inline-alert inline-alert--danger" role="alert" hidden></div>
+  <div class="wizard-actions"><button type="button" class="ghost" data-wizard-back>@@back@@</button><div class="wizard-actions__spacer"></div><button type="button" data-wizard-next>@@next@@ <span aria-hidden="true">→</span></button><button type="submit" data-wizard-save>@@save@@</button></div>
+  <noscript><p class="inline-alert">@@no_script@@</p></noscript>
+</form>

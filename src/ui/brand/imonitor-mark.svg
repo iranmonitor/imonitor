@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" role="img" aria-labelledby="imonitorEyeTitle">
+  <title id="imonitorEyeTitle">iMonitor eye</title>
+  <defs>
+    <linearGradient id="imonitorSurface" x1="8" y1="4" x2="87" y2="92" gradientUnits="userSpaceOnUse"><stop stop-color="#28384d"/><stop offset="1" stop-color="#101b2d"/></linearGradient>
+    <linearGradient id="imonitorLight" x1="17" y1="32" x2="78" y2="67" gradientUnits="userSpaceOnUse"><stop stop-color="#8af1e7"/><stop offset=".52" stop-color="#61d6d6"/><stop offset="1" stop-color="#8bafff"/></linearGradient>
+  </defs>
+  <rect x="1" y="1" width="94" height="94" rx="26" fill="url(#imonitorSurface)" stroke="#a6c0dc" stroke-opacity=".23" stroke-width="1.5"/>
+  <path d="M16 48c7-12 18-19 32-19s25 7 32 19c-7 12-18 19-32 19S23 60 16 48Z" fill="#75dedc" fill-opacity=".05" stroke="url(#imonitorLight)" stroke-width="3.2" stroke-linejoin="round"/>
+  <circle cx="48" cy="48" r="12.5" stroke="url(#imonitorLight)" stroke-width="3.2"/>
+  <circle cx="48" cy="48" r="5.5" fill="url(#imonitorLight)"/>
+  <circle cx="51" cy="44" r="2.2" fill="#e1fffc"/>
+  <path d="M48 17v5M48 74v5" stroke="#8fcce1" stroke-opacity=".6" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="48" cy="17" r="2.5" fill="#88e7dd"/>
+  <circle cx="48" cy="79" r="2.5" fill="#8aaeff"/>
+</svg>

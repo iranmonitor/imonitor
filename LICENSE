@@ -1,0 +1,43 @@
+iMonitor Source-Available Use License 1.0
+
+Copyright (c) 2026 ItzGlace and iMonitor contributors.
+All rights reserved except the permissions expressly granted below.
+
+1. Permitted use
+You may download the official, unmodified iMonitor source and releases from
+the repository or distribution endpoints designated by ItzGlace, retain
+backup copies, compile the unmodified source, and install and run it for
+personal or commercial purposes without a fee, license key, or usage limit.
+You may configure the application through its supported settings and APIs.
+
+2. Source availability
+The source is available for inspection and for building the official
+application. This is a source-available license; it is not an open-source
+license and does not grant a right to modify the source.
+
+3. Restrictions
+You may not modify the application or create derivative works, remove
+copyright notices or required sponsor placements, rebrand the application,
+or redistribute the source or builds outside the official repository and
+distribution endpoints without separate written permission from ItzGlace.
+Compilation and ordinary runtime configuration permitted by section 1 do
+not constitute a prohibited modification. Permissions under applicable law
+that cannot be restricted by license are unaffected.
+
+4. Third-party components
+Third-party dependencies remain governed by their own licenses. These terms
+do not restrict rights granted independently by those component licenses.
+No trademark rights are granted by this license.
+
+5. Termination
+The permissions in this license terminate if you breach its terms. Stop
+using and delete your copies following termination, except for copies you
+must retain under applicable law. ItzGlace may separately grant additional
+permissions in writing.
+
+6. Disclaimer
+THE APPLICATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+AND NONINFRINGEMENT. TO THE EXTENT PERMITTED BY APPLICABLE LAW, THE AUTHORS
+AND COPYRIGHT HOLDERS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM THE APPLICATION OR ITS USE.

@@ -1,0 +1,112 @@
+{
+  "agent_id": "owner-node-01",
+  "interval_secs": 60,
+  "output_file": "./out/current_snapshot.json",
+  "history_file": "./out/history.jsonl",
+  "state_file": "./out/state.json",
+  "checks": [
+    {
+      "kind": "icmp",
+      "id": "icmp-public-v4",
+      "target": "8.8.8.8",
+      "ip_version": "ipv4",
+      "timeout_ms": 2000
+    },
+    {
+      "kind": "tcp",
+      "id": "tcp-web-v4",
+      "target": "203.0.113.10",
+      "port": 443,
+      "ip_version": "ipv4",
+      "timeout_ms": 2000
+    },
+    {
+      "kind": "udp",
+      "id": "udp-custom-v4",
+      "target": "203.0.113.11",
+      "port": 5000,
+      "ip_version": "ipv4",
+      "timeout_ms": 2000,
+      "payload": "health-check",
+      "expect_response": false
+    },
+    {
+      "kind": "ssh",
+      "id": "ssh-host-v4",
+      "target": "203.0.113.12",
+      "port": 22,
+      "ip_version": "ipv4",
+      "timeout_ms": 2500
+    },
+    {
+      "kind": "sftp",
+      "id": "sftp-host-v6",
+      "target": "2001:db8::20",
+      "port": 22,
+      "ip_version": "ipv6",
+      "timeout_ms": 2500
+    },
+    {
+      "kind": "http",
+      "id": "http-site-v4",
+      "host": "example.com",
+      "ip_version": "ipv4",
+      "path": "/",
+      "expected_status": [200, 301, 302]
+    },
+    {
+      "kind": "https",
+      "id": "https-site-v6",
+      "host": "example.com",
+      "ip_version": "ipv6",
+      "path": "/health",
+      "expected_status": [200, 204]
+    },
+    {
+      "kind": "dns",
+      "id": "dns-google-v4",
+      "server": "8.8.8.8",
+      "ip_version": "ipv4",
+      "record_name": "example.com",
+      "record_type": "a",
+      "expect_answers_min": 1
+    },
+    {
+      "kind": "rdp",
+      "id": "rdp-host-v4",
+      "target": "203.0.113.13",
+      "port": 3389,
+      "ip_version": "ipv4"
+    },
+    {
+      "kind": "ftp",
+      "id": "ftp-host-v4",
+      "target": "203.0.113.14",
+      "port": 21,
+      "ip_version": "ipv4",
+      "username": "monitor",
+      "password": "replace_me"
+    },
+    {
+      "kind": "tunnel",
+      "id": "gre-tunnel-v4",
+      "protocol": "gre",
+      "interface": "gre1",
+      "ip_version": "ipv4",
+      "inner_probe": "10.10.10.2",
+      "source_interface": "gre1",
+      "require_bidirectional_traffic": true,
+      "min_rx_packets_delta": 1,
+      "min_tx_packets_delta": 1
+    },
+    {
+      "kind": "tunnel",
+      "id": "esp-sa-v4",
+      "protocol": "esp",
+      "ip_version": "ipv4",
+      "local_outer": "198.51.100.11",
+      "outer_remote": "198.51.100.12",
+      "inner_probe": "10.20.20.2"
+    }
+  ]
+}

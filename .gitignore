@@ -1,0 +1,14 @@
+/target/
+/runtime/
+*.db
+*.db-shm
+*.db-wal
+*.key
+*.log
+.env
+/dist/
+*.pem
+.runtime/
+__pycache__/
+/runtime-backups/
+.env.*
