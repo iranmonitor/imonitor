@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="https://iranmonitor.net"><img src="https://img.shields.io/badge/Visit_IranMonitor-Website-0f766e?style=for-the-badge" alt="Visit the IranMonitor website"></a>
+  <a href="https://t.me/IranMonitorNet"><img src="https://img.shields.io/badge/Join_Our_Channel-Telegram-229ED9?style=for-the-badge&logo=telegram&logoColor=white" alt="Join IranMonitor on Telegram"></a>
+</p>
+
+<p align="center"><strong>Stay connected with IranMonitor</strong><br>
+Explore our projects and services at <a href="https://iranmonitor.net">iranmonitor.net</a>, and join <a href="https://t.me/IranMonitorNet">@IranMonitorNet on Telegram</a> for project news, release announcements, and updates.</p>
+
 <p align="center"><img src="src/ui/brand/imonitor-mark.svg" alt="iMonitor eye logo" width="96"></p>
 
 # iMonitor 2.1.0
