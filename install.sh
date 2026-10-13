@@ -56,6 +56,12 @@ log() {
   printf '[iMonitor] %s\n' "$*"
 }
 
+print_community_links() {
+  printf '\nStay connected with IranMonitor\n'
+  printf '  Explore our projects and services: https://iranmonitor.net\n'
+  printf '  Join our Telegram channel for news and updates: https://t.me/IranMonitorNet\n\n'
+}
+
 fail() {
   printf '[iMonitor] error: %s\n' "$*" >&2
   exit 1
@@ -171,6 +177,7 @@ print_banner() {
       }
     }'
   printf '\033[38;2;30;62;135miMonitor V%s Installer\033[0m\n\n' "${APP_VERSION}"
+  print_community_links
 }
 
 need_root() {
@@ -848,6 +855,7 @@ main() {
     log "admin password: ${ADMIN_PASSWORD}"
   fi
   log "for the local CLI management panel, run: imonitor"
+  print_community_links
 }
 
 if [[ ${BASH_SOURCE[0]:-$0} == "$0" ]]; then main "$@"; fi
